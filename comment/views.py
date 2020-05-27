@@ -6,7 +6,6 @@ from .forms import CommentForm
 from .models import Comment
 from notifications.signals import notify
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 
 # 文章评论
 @login_required(login_url='/userprofile/login/')
@@ -21,7 +20,7 @@ def post_comment(request, article_id, parent_comment_id=None):
             new_comment = comment_form.save(commit=False)
             new_comment.article = article
             new_comment.user = request.user
-            print("***************")
+
             # 二级回复
             if parent_comment_id:
                 parent_comment = Comment.objects.get(id=parent_comment_id)
@@ -31,31 +30,41 @@ def post_comment(request, article_id, parent_comment_id=None):
                 new_comment.reply_to = parent_comment.user
                 new_comment.save()
                 if not parent_comment.user.is_superuser:
-                    print("-"*20)
+                    print("*"*30)
+                    print(parent_comment.user)
                     notify.send(
                         request.user,
                         recipient=parent_comment.user,
                         verb='回复了你',
+                        # verb='哈哈哈哈哈哈哈',
                         target=article,
                         action_object=new_comment,
                     )
-                return JsonResponse({"code": "200 OK", "new_comment_id": new_comment.id})
+                return HttpResponse('200 OK')
 
             new_comment.save()
             if not request.user.is_superuser:
-                print("+" * 30)
-                ns = notify.send(
+                print("-" * 30)
+                print(User.objects.filter(is_superuser=1))
+                notify.send(
                     request.user,
-                    recipient=User.objects.filter(is_superuser=1),
+                    recipient=request.user,
                     verb='回复了你',
                     target=article,
                     action_object=new_comment,
                 )
-                print(ns)
-            # 新增代码，添加锚点
-            redirect_url = article.get_absolute_url() + '#comment_elem_' + str(new_comment.id)
-            # 修改redirect参数
-            return redirect(redirect_url)
+            # 任何信息都给超级管理员发
+            notify.send(
+                request.user,
+                recipient=User.objects.filter(is_superuser=1),
+                verb='超级管理员消息',
+                target=article,
+                action_object=new_comment,
+            )
+
+            new_comment.save()
+
+            return redirect(article)
         else:
             return HttpResponse("表单内容有误，请重新填写。")
     # 处理 GET 请求

@@ -12,9 +12,6 @@ from comment.models import Comment
 # from django.views import View
 # from django.views.generic import ListView
 from comment.forms import CommentForm
-from django.shortcuts import get_object_or_404
-from django.views import View
-
 
 # 文章列表
 def article_list(request):
@@ -64,9 +61,7 @@ def article_list(request):
     return render(request, 'article/list.html', context)
 
 def article_detail(request, id):
-    article = get_object_or_404(ArticlePost, id=id)
-
-    # article = ArticlePost.objects.get(id=id)
+    article = ArticlePost.objects.get(id=id)
     comments = Comment.objects.filter(article=id)
 
     # 浏览量 +1
@@ -223,11 +218,3 @@ def article_update(request, id):
 
         # 将响应返回到模板中
         return render(request, 'article/update.html', context)
-
-# 点赞数 +1
-class IncreaseLikesView(View):
-    def post(self, request, *args, **kwargs):
-        article = ArticlePost.objects.get(id=kwargs.get('id'))
-        article.likes += 1
-        article.save()
-        return HttpResponse('success')

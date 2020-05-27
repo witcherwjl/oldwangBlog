@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="62524552-75cc-4f15-8dc7-0e9e3277782f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/comment/reply.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/reply.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notice/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notice/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +93,7 @@
       <updated>1590410054827</updated>
       <workItem from="1590410056328" duration="6722000" />
       <workItem from="1590455091603" duration="29753000" />
-      <workItem from="1590537595584" duration="3942000" />
+      <workItem from="1590537595584" duration="516000" />
     </task>
     <servers />
   </component>

@@ -59,10 +59,6 @@ class ArticlePost(models.Model):
     )
 
     tags = TaggableManager(blank=True)
-    # 新增点赞数统计
-
-    likes = models.PositiveIntegerField(default=0)
-
 
     # 内部类 class Meta 用于给 model 定义元数据
     class Meta:
