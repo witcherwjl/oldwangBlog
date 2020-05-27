@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*t30o64^f8ax7iz3k93ay##yki$pg4nj+i282!1w%_he*2(mc0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -146,18 +146,25 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
+EMAIL_HOST_USER = ""
+# 你的邮箱密码
+EMAIL_HOST_PASSWORD = ""
+
+with open(os.path.join("email.txt"), "r") as f:
+    # 改为你自己的邮箱名！
+    EMAIL_HOST_USER = f.readline().strip()
+    # 你的邮箱密码
+    EMAIL_HOST_PASSWORD = f.readline().strip()
+
+DEFAULT_FROM_EMAIL = "小王同志祝您天天开心"
+
 # SMTP服务器，改为你的邮箱的smtp!
 EMAIL_HOST = 'smtp.qq.com'
-# 改为你自己的邮箱名！
-EMAIL_HOST_USER = '836691447@qq.com'
-# 你的邮箱密码
-EMAIL_HOST_PASSWORD = 'vezrsiouwiqvbaif'
 # 发送邮件的端口
 EMAIL_PORT = 25
 # 是否使用 TLS
 EMAIL_USE_TLS = True
-# 默认的发件人
-DEFAULT_FROM_EMAIL = 'xxx的博客 <836691447@qq.com>'
+
 
 # 媒体文件地址
 MEDIA_URL = '/media/'
