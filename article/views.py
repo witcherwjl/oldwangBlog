@@ -12,6 +12,7 @@ from comment.models import Comment
 # from django.views import View
 # from django.views.generic import ListView
 from comment.forms import CommentForm
+from django.views import View
 
 # 文章列表
 def article_list(request):
@@ -218,3 +219,11 @@ def article_update(request, id):
 
         # 将响应返回到模板中
         return render(request, 'article/update.html', context)
+
+# 点赞数 +1
+class IncreaseLikesView(View):
+    def post(self, request, *args, **kwargs):
+        article = ArticlePost.objects.get(id=kwargs.get('id'))
+        article.likes += 1
+        article.save()
+        return HttpResponse('success')
