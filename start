@@ -1,0 +1,2 @@
+sudo service nginx reload
+gunicorn --bind unix:/tmp/112.124.26.204.socket my_blog.wsgi:applicatio
