@@ -1,6 +1,7 @@
 <!-- extends表明此页面继承自 base.html 文件 -->
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load mptt_tags %}
 
 <!-- 写入 base.html 中定义的 title -->
 {% block title %}
@@ -82,8 +83,6 @@
                 </h5>
                 <br>
             {% endif %}
-
-
 
             <!-- 显示评论 -->
             {% load mptt_tags %}

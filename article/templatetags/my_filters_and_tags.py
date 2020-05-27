@@ -44,8 +44,8 @@ def current_time(format_string):
     """当前时间格式化"""
     return datetime.datetime.now().strftime(format_string)
 
-# @register.inclusion_tag('article/tag_list.html')
-# def show_comments_pub_time(article):
-#     """显示文章评论的发布时间"""
-#     comments = article.comments.all()
-#     return {'comments': comments}
+@register.inclusion_tag('article/tag_list.html')
+def show_comments_pub_time(article):
+    """显示文章评论的发布时间"""
+    comments = article.comments.all()
+    return {'comments': comments}
