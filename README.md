@@ -61,5 +61,3 @@ source env/bin/activate
 sudo service nginx reload
 gunicorn --bind unix:/tmp/118.31.35.48.socket my_blog.wsgi:application
 ```
-# 2020年5月27日 记录
-
