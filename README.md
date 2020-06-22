@@ -1,7 +1,7 @@
 # oldwangBlog
 个人博客项目
 
-[oldwangBlog地址](http://112.124.26.204/)
+[oldwangBlog地址](http://www.oldwang.space/)
 
 # 简介
 
